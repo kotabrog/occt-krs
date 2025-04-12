@@ -1,0 +1,8 @@
+name: cadquery-env
+channels:
+  - cadquery
+  - conda-forge
+dependencies:
+  - python=3.9
+  - cadquery=2.5.2
+  - jupyter

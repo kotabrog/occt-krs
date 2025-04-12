@@ -1,0 +1,31 @@
+{
+    "name": "CadQuery Dev Container",
+
+    // 既存の Dockerfile を使ってコンテナをビルドする設定
+    "build": {
+      "dockerfile": "../Dockerfile",   // Dockerfile が一つ上の階層にある前提
+      "context": ".."
+    },
+
+    // Docker コンテナ起動時の追加オプション
+    "runArgs": [
+      "-e", "DISPLAY",
+      "-e", "WAYLAND_DISPLAY",
+      "-e", "XDG_RUNTIME_DIR",
+      "-v", "${env:XDG_RUNTIME_DIR}:${env:XDG_RUNTIME_DIR}",
+      "-v", "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+    ],
+
+    "customizations": {
+      "vscode": {
+            // コンテナ内にインストールしたい VSCode 拡張機能を列挙
+            "extensions": [
+                "ms-python.python",
+                "ms-toolsai.jupyter"
+            ]
+        }
+    },
+
+    // コンテナ内で動かすコマンド (例えばGitの設定やパッケージ追加など)
+    "postCreateCommand": ""
+}
